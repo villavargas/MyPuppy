@@ -15,6 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".FavoritePet"
+            android:label="Mascota favorita"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ContactActivity" />
+        <activity android:name=".AboutActivity"></activity>
     </application>
 
 </manifest>

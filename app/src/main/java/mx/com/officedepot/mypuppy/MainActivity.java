@@ -1,60 +1,105 @@
 package mx.com.officedepot.mypuppy;
 
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+import android.content.Intent;
 import java.util.ArrayList;
-import java.util.List;
+
+import layout.Fragment_recyclerview;
+import layout.fragment_per;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView personName;
-    TextView personAge;
-    ImageView personPhoto;
+    Toolbar miActionBar;
+    ImageButton ib;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
-    private List<Mascota> persons;
-    private RecyclerView rv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pets_item);
+        setContentView(R.layout.activity_main);
+
+        miActionBar = (Toolbar) findViewById(R.id.miActionBar);
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+
+        setUpViewPager();
+
+       /* if (miActionBar != null) {
+            setSupportActionBar(miActionBar);
+        }*/
 
 
-        personName = (TextView)findViewById(R.id.person_name);
-        personAge = (TextView)findViewById(R.id.person_age);
-        personPhoto = (ImageView)findViewById(R.id.person_photo);
 
-        personName.setText("Emma Wilson");
-        personAge.setText("23 years old");
-        personPhoto.setImageResource(R.drawable.cat);
+
+
+       ib = (ImageButton) findViewById(R.id.estrellita);
+
+        ib.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, FavoritePet.class);
+                startActivity(i);
+            }
+        });
+
+}
+
+
+    public ArrayList<Fragment> addFragments(){
+
+        ArrayList<Fragment> fragments = new ArrayList<>();
+
+
+        fragments.add(new Fragment_recyclerview());
+        fragments.add(new fragment_per());
+
+        return fragments;
     }
 
 
+    private void setUpViewPager(){
 
-    private void initializeData(){
-        persons = new ArrayList<>();
-        persons.add(new Mascota( R.drawable.cat, "Cat" , 0));
-        persons.add(new Mascota(R.drawable.dog, "Dog", 0));
-        persons.add(new Mascota(R.drawable.dog2, "Dog 2", 0));
-        persons.add(new Mascota( R.drawable.fish, "Fish" , 0));
-        persons.add(new Mascota( R.drawable.frog, "Frog" , 0));
-        persons.add(new Mascota( R.drawable.guinea, "Guinea" , 0));
-        persons.add(new Mascota(R.drawable.horse, "Horse", 0));
-        persons.add(new Mascota(R.drawable.pet, "Pet 1", 0));
-        persons.add(new Mascota(R.drawable.pet3, "Pet 3", 0));
+        viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(), addFragments()));
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_panda);
+
     }
 
 
-    private void initializeAdapter(){
-        MyAdapter adapter = new MyAdapter(persons);
-        rv.setAdapter(adapter);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_opciones, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+
+            case R.id.mAbout:
+                Intent intent = new Intent(this, AboutActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.mContact:
+                Intent i = new Intent(this, ContactActivity.class);
+                startActivity(i);
+                break;
+
+        }
+
+        return true;
     }
 }

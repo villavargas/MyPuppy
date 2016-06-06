@@ -1,49 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:padding="16dp"
-    >
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv"
+    card_view:cardCornerRadius="4dp"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
+    android:layout_marginBottom="@dimen/activity_vertical_margin">
 
-    <android.support.v7.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/cv"
-        >
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/cat"
+            android:id="@+id/photoPet"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
             >
 
-            <ImageView
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/person_photo"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="16dp"
-                />
+                android:background="@drawable/ic_bone"
+                android:id="@+id/ratear"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/person_name"
-                android:layout_toRightOf="@+id/person_photo"
-                android:layout_alignParentTop="true"
-                android:textSize="30sp"
-                />
+                android:textSize="24dp"
+                android:textColor="@color/colorAccent"
+                android:layout_gravity="center_vertical"
+                android:layout_toRightOf="@+id/ratear"
+                android:layout_centerVertical="true"
+                android:id="@+id/namePet"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/person_age"
-                android:layout_toRightOf="@+id/person_photo"
-                android:layout_below="@+id/person_name"
+                android:textSize="24dp"
+                android:textColor="@color/colorAccent"
+                android:layout_gravity="center_vertical"
+                android:layout_toLeftOf="@+id/rating"
+                android:layout_centerVertical="true"
+                android:id="@+id/countRating"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_rating"
+                android:layout_alignParentRight="true"
+                android:id="@+id/rating"
                 />
 
         </RelativeLayout>
 
+    </LinearLayout>
+
     </android.support.v7.widget.CardView>
 
-</LinearLayout>
