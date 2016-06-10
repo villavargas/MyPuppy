@@ -42,9 +42,6 @@ public class MainActivity extends AppCompatActivity {
         }*/
 
 
-
-
-
        ib = (ImageButton) findViewById(R.id.estrellita);
 
         ib.setOnClickListener(new View.OnClickListener(){

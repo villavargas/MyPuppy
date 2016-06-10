@@ -75,6 +75,7 @@ public class ConstructorMascotas {
         BaseDatos db = new BaseDatos(contex);
         ContentValues contentValues = new ContentValues();
 
+        System.out.println("rait: " + pet.getRait() );
         contentValues.put(ConstantesBaseDatos.TABLE_RATING_MASCOTA_ID_MASCOTA, pet.getId());
         contentValues.put(ConstantesBaseDatos.TABLE_RATING_MASCOTA_NUMERO_RATING, pet.getRait());
 

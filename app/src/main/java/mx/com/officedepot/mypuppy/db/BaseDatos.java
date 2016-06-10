@@ -101,15 +101,18 @@ public class BaseDatos extends SQLiteOpenHelper {
     public int obtenerRatingMascota (Mascota pet){
        int rating = 0;
 
-        String sql = "SELECT " + ConstantesBaseDatos.TABLE_RATING_MASCOTA_NUMERO_RATING +
+        String sql = "SELECT COUNT(" + ConstantesBaseDatos.TABLE_RATING_MASCOTA_NUMERO_RATING + ")" +
                 " FROM " + ConstantesBaseDatos.TABLE_RATING_MASCOTA +
                 " WHERE " + ConstantesBaseDatos.TABLE_RATING_MASCOTA_ID_MASCOTA + " = " + pet.getId();
 
        SQLiteDatabase db = this.getWritableDatabase();
+        System.out.println("sql:" + sql);
+
         Cursor registros = db.rawQuery(sql, null);
 
         if (registros.moveToNext()){
             rating = registros.getInt(0);
+            System.out.println("Bse datos:" + rating);
         }
 
         db.close();
