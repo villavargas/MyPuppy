@@ -1,4 +1,4 @@
-package layout;
+package mx.com.officedepot.mypuppy.vista;
 
 import android.content.Context;
 import android.net.Uri;

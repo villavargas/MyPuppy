@@ -14,8 +14,9 @@ import android.widget.ImageButton;
 import android.content.Intent;
 import java.util.ArrayList;
 
-import layout.Fragment_recyclerview;
-import layout.fragment_per;
+import mx.com.officedepot.mypuppy.adapter.PageAdapter;
+import mx.com.officedepot.mypuppy.vista.Fragment_recyclerview;
+import mx.com.officedepot.mypuppy.vista.fragment_per;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,23 +1,30 @@
-package mx.com.officedepot.mypuppy;
+package mx.com.officedepot.mypuppy.pojo;
 
 /**
  * Created by VillaVargas on 29/05/16.
  */
 public class Mascota {
 
-    int foto;
-    String nombre_mascota;
-    String rait;
-    int bone;
-    int bone2;
+    public int id;
+    public String nombre_mascota;
+    public int rait;
+    public int foto;
+    public int bone;
+    public int bone2;
 
-    public Mascota(int foto, String nombre_mascota, String rait, int bone, int bone2) {
+    public Mascota(int foto, String nombre_mascota, int rait, int bone, int bone2) {
         this.foto = foto;
         this.nombre_mascota = nombre_mascota;
         this.rait = rait;
         this.bone = bone;
         this.bone2 = bone2;
     }
+
+    public Mascota(){
+
+    }
+
+
 
 
     public int getFoto() {
@@ -36,11 +43,11 @@ public class Mascota {
         this.nombre_mascota = nombre_mascota;
     }
 
-    public String getRait() {
+    public int getRait() {
         return rait;
     }
 
-    public void setRait(String rait) {
+    public void setRait(int rait) {
         this.rait = rait;
     }
 
@@ -58,5 +65,13 @@ public class Mascota {
 
     public void setBone2(int bone2) {
         this.bone2 = bone2;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
